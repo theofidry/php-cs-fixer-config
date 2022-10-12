@@ -1,0 +1,43 @@
+{
+    "name": "theofidry/php-cs-fixer-config",
+    "type": "library",
+    "description": "The PHP-CS-Fixer default config for my projects",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Théo FIDRY",
+            "email": "theo.fidry@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "conflict": {
+        "friendsofphp/php-cs-fixer": "<3.0,>=4.0",
+        "phpunit/phpunit": "<9.4.3"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "~2.13.0",
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpunit/phpunit": "^9.5",
+        "symfony/filesystem": "^5.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Fidry\\PhpCsFixerConfig\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fidry\\PhpCsFixerConfig\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
