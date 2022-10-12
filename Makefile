@@ -13,12 +13,30 @@ PHPUNIT = $(PHPUNIT_BIN)
 all: validate_package cs phpunit
 
 .PHONY: validate_package
-validate_package: vendor
+validate_package:
 	composer validate --strict
 
 .PHONY: cs
-cs: $(PHP_CS_FIXER_BIN)
+cs: composer_normalize php_cs_fixer
+
+.PHONY: cs_lint
+cs_lint: composer_normalize_lint php_cs_fixer_lint
+
+.PHONY: php_cs_fixer
+php_cs_fixer: $(PHP_CS_FIXER_BIN)
 	$(PHP_CS_FIXER)
+
+.PHONY: php_cs_fixer_lint
+php_cs_fixer_lint: $(PHP_CS_FIXER_BIN)
+	$(PHP_CS_FIXER) --dry-run
+
+.PHONY: composer_normalize
+composer_normalize: vendor
+	composer normalize
+
+.PHONY: composer_normalize_lint
+composer_normalize_lint: vendor
+	composer normalize --dry-run
 
 .PHONY: phpunit
 phpunit: $(PHPUNIT_BIN)
