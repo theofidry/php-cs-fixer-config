@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-use Fidry\PhpCsFixerConfig\Config;
+use Fidry\PhpCsFixerConfig\FidryConfig;
 use PhpCsFixer\Finder;
 
 $finder = Finder::create()
@@ -22,7 +22,7 @@ $finder = Finder::create()
     ])
     ->ignoreDotFiles(false);
 
-$config = new Config(
+$config = new FidryConfig(
     <<<'EOF'
         This file is part of the Fidry PHP-CS-Fixer Config package.
 

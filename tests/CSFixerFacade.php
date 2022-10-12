@@ -1,9 +1,19 @@
 <?php
 
+/*
+ * This file is part of the Fidry PHP-CS-Fixer Config package.
+ *
+ * (c) Théo FIDRY <theo.fidry@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Fidry\PhpCsFixerConfig\Tests;
 
+use PhpCsFixer\Cache\NullCacheManager;
 use PhpCsFixer\Config;
 use PhpCsFixer\Console\ConfigurationResolver;
 use PhpCsFixer\Error\ErrorsManager;
@@ -42,7 +52,7 @@ final class CSFixerFacade
             $errorsManager,
             $resolver->getLinter(),
             $resolver->isDryRun(),
-            $resolver->getCacheManager(),
+            new NullCacheManager(),
             $resolver->getDirectory(),
             $resolver->shouldStopOnViolation()
         );

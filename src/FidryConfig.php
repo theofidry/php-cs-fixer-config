@@ -15,9 +15,9 @@ namespace Fidry\PhpCsFixerConfig;
 
 use PhpCsFixer\Config as BaseConfig;
 
-final class Config extends BaseConfig
+final class FidryConfig extends BaseConfig
 {
-    public function __construct(string $headerComment)
+    public function __construct(string $header)
     {
         parent::__construct();
 
@@ -48,7 +48,7 @@ final class Config extends BaseConfig
                     ],
                 ],
                 'header_comment' => [
-                    'header' => $headerComment,
+                    'header' => $header,
                     'location' => 'after_open',
                 ],
                 'mb_str_functions' => true,

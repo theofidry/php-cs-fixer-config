@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Fidry\PhpCsFixerConfig\Tests;
 
-use PhpCsFixer\Config;
+use Fidry\PhpCsFixerConfig\FidryConfig;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -21,11 +21,11 @@ use function file_get_contents;
 use function str_replace;
 
 /**
- * @covers \Fidry\PhpCsFixerConfig\Config
+ * @covers \Fidry\PhpCsFixerConfig\FidryConfig
  *
  * @internal
  */
-class ConfigTest extends TestCase
+class FidryConfigTest extends TestCase
 {
     private const FIXTURES_DIR = __DIR__.'/Fixtures';
 
@@ -50,30 +50,7 @@ class ConfigTest extends TestCase
 
     public function test_it_can_be_instantiated(): void
     {
-        $config = new Config(
-            <<<'EOF'
-            This file is part of the Fidry PHP-CS-Fixer Config package.
-
-            (c) Théo FIDRY <theo.fidry@gmail.com>
-
-            For the full copyright and license information, please view the LICENSE
-            file that was distributed with this source code.
-            EOF,
-        );
-
-        self::assertInstanceOf(Config::class, $config);
-    }
-
-    public function test_it_can_be_used_to_fix_code(): void
-    {
-        $tmpFile = $this->tmpDir.'/example.php';
-
-        $this->filesystem->copy(
-            self::FIXTURES_DIR.'/example-dirty.php',
-            $tmpFile,
-        );
-
-        $config = new Config(
+        $config = new FidryConfig(
             <<<'EOF'
                 This file is part of the Fidry PHP-CS-Fixer Config package.
 
@@ -84,12 +61,34 @@ class ConfigTest extends TestCase
                 EOF,
         );
 
+        self::assertInstanceOf(FidryConfig::class, $config);
+    }
+
+    public function test_it_can_be_used_to_fix_code(): void
+    {
+        $tmpFile = $this->tmpDir.'/ExampleClass.php';
+
+        $this->filesystem->copy(
+            self::FIXTURES_DIR.'/ExampleClass.dirty.php',
+            $tmpFile,
+        );
+
+        $config = new FidryConfig(
+            <<<'EOF'
+                This file is part of the Fidry PHP-CS-Fixer Config package.
+
+                (c) Théo FIDRY <theo.fidry@gmail.com>
+
+                For the full copyright and license information, please view the LICENSE
+                file that was distributed with this source code.
+                EOF,
+        );
         $config->setRiskyAllowed(true);
 
         CSFixerFacade::fixFiles($config, $this->tmpDir);
 
         self::assertFileEquals(
-            self::FIXTURES_DIR.'/example-fixed.php',
+            self::FIXTURES_DIR.'/ExampleClass.fixed.php',
             $tmpFile,
             file_get_contents($tmpFile),
         );
