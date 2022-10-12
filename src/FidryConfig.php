@@ -90,6 +90,8 @@ final class FidryConfig extends BaseConfig
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'no_multi_line',
         ],
+        'native_constant_invocation' => false,
+        'native_function_invocation' => false,
         'no_alternative_syntax' => true,
         'no_binary_string' => true,
         'no_homoglyph_names' => true,
@@ -113,7 +115,7 @@ final class FidryConfig extends BaseConfig
             'allow_mixed' => true,
         ],
         'nullable_type_declaration_for_default_null_value' => true,
-        'ordered_class_elements' => true,
+        'ordered_class_elements' => false,
         // Order class, constant and function imports correctly
         // Required because we added "global_namespace_import"
         'ordered_imports' => [
@@ -123,6 +125,7 @@ final class FidryConfig extends BaseConfig
                 'const',
             ],
         ],
+        'phpdoc_annotation_without_dot' => false,
         'phpdoc_order' => true,
         'phpdoc_order_by_value' => true,
         'phpdoc_separation' => false,
@@ -188,29 +191,45 @@ final class FidryConfig extends BaseConfig
         ],
     ];
 
-    public function __construct(string $headerComment, int $phpMinVersion)
+    public function __construct(?string $headerComment, int $phpMinVersion)
     {
         parent::__construct();
 
         $phpSpecificRules = array_filter(
             self::PHP_VERSION_SPECIFIC_RULES,
-            static fn (array $rules, int $requiredPhpVersion): bool => $requiredPhpVersion >= $phpMinVersion,
-            ARRAY_FILTER_USE_BOTH
+            static fn (array $rules, int $requiredPhpVersion): bool => $requiredPhpVersion <= $phpMinVersion,
+            ARRAY_FILTER_USE_BOTH,
         );
 
-        $rules = array_merge(
-            self::UNIVERSAL_RULES,
-            [
+        $headerRule = null === $headerComment
+            ? []
+            : [
                 'header_comment' => [
                     'header' => $headerComment,
                     'location' => 'after_open',
                 ],
-            ],
-            ...$phpSpecificRules
+            ];
+
+        $rules = array_merge(
+            self::UNIVERSAL_RULES,
+            $headerRule,
+            ...$phpSpecificRules,
         );
 
         $this
             ->setRules($rules)
             ->setRiskyAllowed(true);
+    }
+
+    public function addRules(array $rules): self
+    {
+        $this->setRules(
+            array_merge(
+                $this->getRules(),
+                $rules,
+            ),
+        );
+
+        return $this;
     }
 }

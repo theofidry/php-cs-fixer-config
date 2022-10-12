@@ -38,6 +38,9 @@ $config = new FidryConfig(
 );
 
 // You can further configure the $config here, to add or override some rules. 
+$config->addRules([
+    // ...
+]);
 
 return $config->setFinder($finder);
 ```

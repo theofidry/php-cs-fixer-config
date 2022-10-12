@@ -94,4 +94,53 @@ class FidryConfigTest extends TestCase
             file_get_contents($tmpFile),
         );
     }
+
+    /**
+     * @dataProvider minPhpVersion
+     *
+     * @param list<string> $expectedRules
+     * @param list<string> $expectedIgnoredRules
+     */
+    public function test_it_applies_rules_supported_by_the_min_php_version(
+        int $minPhpVersion,
+        array $expectedRules,
+        array $expectedIgnoredRules
+    ): void {
+        $config = new FidryConfig('', $minPhpVersion);
+
+        $rules = $config->getRules();
+
+        foreach ($expectedRules as $expectedRule) {
+            self::assertArrayHasKey($expectedRule, $rules);
+        }
+
+        foreach ($expectedIgnoredRules as $ignoredRule) {
+            self::assertArrayNotHasKey($ignoredRule, $rules);
+        }
+    }
+
+    public static function minPhpVersion(): iterable
+    {
+        $php74Rule = '@PHP70Migration';
+        $php80Rule = '@PHP80Migration';
+        $php81Rule = '@PHP81Migration';
+
+        yield [
+            74000,
+            [$php74Rule],
+            [$php80Rule, $php81Rule],
+        ];
+
+        yield [
+            80000,
+            [$php74Rule, $php80Rule],
+            [$php81Rule],
+        ];
+
+        yield [
+            81000,
+            [$php74Rule, $php80Rule, $php81Rule],
+            [],
+        ];
+    }
 }
