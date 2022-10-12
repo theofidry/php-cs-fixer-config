@@ -198,22 +198,22 @@ final class FidryConfig extends BaseConfig
         $phpSpecificRules = array_filter(
             self::PHP_VERSION_SPECIFIC_RULES,
             static fn (array $rules, int $requiredPhpVersion): bool => $requiredPhpVersion <= $phpMinVersion,
-            ARRAY_FILTER_USE_BOTH
+            ARRAY_FILTER_USE_BOTH,
         );
 
         $headerRule = null === $headerComment
             ? []
             : [
-            'header_comment' => [
-                'header' => $headerComment,
-                'location' => 'after_open',
-            ],
-        ];
+                'header_comment' => [
+                    'header' => $headerComment,
+                    'location' => 'after_open',
+                ],
+            ];
 
         $rules = array_merge(
             self::UNIVERSAL_RULES,
             $headerRule,
-            ...$phpSpecificRules
+            ...$phpSpecificRules,
         );
 
         $this

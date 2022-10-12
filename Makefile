@@ -17,7 +17,7 @@ validate_package:
 	composer validate --strict
 
 .PHONY: cs
-cs: composer_normalize php_cs_fixer
+cs: php_cs_fixer
 
 .PHONY: cs_lint
 cs_lint: composer_normalize_lint php_cs_fixer_lint
