@@ -23,6 +23,13 @@ final class FidryConfig extends BaseConfig
     private const UNIVERSAL_RULES = [
         '@DoctrineAnnotation' => true,
 
+        '@PHP70Migration' => true,
+        '@PHP70Migration:risky' => true,
+        '@PHP73Migration' => true,
+
+        '@PHP74Migration' => true,
+        '@PHP74Migration:risky' => true,
+
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
 
@@ -158,15 +165,6 @@ final class FidryConfig extends BaseConfig
     ];
 
     private const PHP_VERSION_SPECIFIC_RULES = [
-        73000 => [
-            '@PHP70Migration' => true,
-            '@PHP70Migration:risky' => true,
-            '@PHP73Migration' => true,
-        ],
-        74000 => [
-            '@PHP74Migration' => true,
-            '@PHP74Migration:risky' => true,
-        ],
         80000 => [
             '@PHP80Migration' => true,
             '@PHP80Migration:risky' => true,
