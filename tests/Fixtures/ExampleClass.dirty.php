@@ -17,6 +17,8 @@ class ExampleClass
             1,2,3,
         );
 
+        echo PHP_VERSION_ID;
+        $defined = defined('FOO');
         $dateTime = new \DateTime();
         $dateTimeImmutable = new \DateTimeImmutable();
     }

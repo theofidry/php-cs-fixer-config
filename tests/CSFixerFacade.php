@@ -39,7 +39,7 @@ final class CSFixerFacade
                 'stop-on-violation' => false,
             ],
             $path,
-            $toolInfo
+            $toolInfo,
         );
 
         $finder = Finder::create()->in($path);
@@ -54,7 +54,7 @@ final class CSFixerFacade
             $resolver->isDryRun(),
             new NullCacheManager(),
             $resolver->getDirectory(),
-            $resolver->shouldStopOnViolation()
+            $resolver->shouldStopOnViolation(),
         );
 
         $runner->fix();

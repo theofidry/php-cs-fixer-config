@@ -16,7 +16,6 @@ namespace Fidry\PhpCsFixerConfig\Tests;
 use Fidry\PhpCsFixerConfig\FidryConfig;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
-
 use function file_get_contents;
 use function str_replace;
 
@@ -39,7 +38,7 @@ class FidryConfigTest extends TestCase
 
         $this->tmpDir = TmpDirectoryGenerator::generate(
             $this->filesystem,
-            str_replace('\\', '_', __CLASS__)
+            str_replace('\\', '_', __CLASS__),
         );
     }
 
@@ -59,6 +58,7 @@ class FidryConfigTest extends TestCase
                 For the full copyright and license information, please view the LICENSE
                 file that was distributed with this source code.
                 EOF,
+            74_000,
         );
 
         self::assertInstanceOf(FidryConfig::class, $config);
@@ -82,6 +82,7 @@ class FidryConfigTest extends TestCase
                 For the full copyright and license information, please view the LICENSE
                 file that was distributed with this source code.
                 EOF,
+            74_000,
         );
         $config->setRiskyAllowed(true);
 

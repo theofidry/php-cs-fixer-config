@@ -16,7 +16,6 @@ namespace Fidry\PhpCsFixerConfig\Tests;
 use RuntimeException;
 use Symfony\Component\Filesystem\Filesystem;
 use Throwable;
-
 use function bin2hex;
 use function random_bytes;
 use function sprintf;
@@ -45,7 +44,7 @@ final class TmpDirectoryGenerator
             sprintf(
                 'Could not generate a temporary directory for the namespace "%s" after "%s" attempt.',
                 $namespace,
-                self::MAX_LOOP_COUNT
+                self::MAX_LOOP_COUNT,
             ),
         );
     }
