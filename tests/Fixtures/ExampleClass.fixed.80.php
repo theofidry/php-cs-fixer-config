@@ -37,7 +37,9 @@ class ExampleClass
         $defined = defined('FOO');
         $dateTime = new DateTime();
         $dateTimeImmutable = new DateTimeImmutable();
-        $a = null;
+        str_starts_with($haystack, $needle);
         $foo = 0123;
+        $name = 'World';
+        echo "Hello {$name}!";
     }
 }

@@ -128,6 +128,11 @@ class FidryConfigTest extends TestCase
             80_100,
             self::FIXTURES_DIR.'/ExampleClass.fixed.81.php',
         ];
+
+        yield '8.2' => [
+            80_200,
+            self::FIXTURES_DIR.'/ExampleClass.fixed.82.php',
+        ];
     }
 
     /**

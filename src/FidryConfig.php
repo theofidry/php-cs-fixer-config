@@ -105,7 +105,7 @@ final class FidryConfig extends BaseConfig
                 'group_import',
             ],
         ],
-        'no_unset_cast' => false,   // This is PHP 8.0+ only
+        'no_unset_cast' => true,
         'no_unset_on_property' => false,
         'no_useless_else' => true,
         'no_useless_return' => true,
@@ -188,6 +188,9 @@ final class FidryConfig extends BaseConfig
                     'parameters',
                 ],
             ],
+        ],
+        80200 => [
+            '@PHP82Migration' => true,
         ],
     ];
 
