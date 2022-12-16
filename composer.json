@@ -13,13 +13,13 @@
         "php": "^7.4 || ^8.0"
     },
     "conflict": {
-        "friendsofphp/php-cs-fixer": "<3.0,>=4.0",
+        "friendsofphp/php-cs-fixer": "<3.11.0,>=4.0",
         "phpunit/phpunit": "<9.4.3"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "~2.13.0",
         "fidry/makefile": "^0.2.1",
-        "friendsofphp/php-cs-fixer": "^3.0",
+        "friendsofphp/php-cs-fixer": "^3.11.0",
         "phpunit/phpunit": "^9.4.3",
         "symfony/filesystem": "^5.4 || ^6.1"
     },
