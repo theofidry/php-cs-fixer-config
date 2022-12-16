@@ -27,7 +27,7 @@ jobs:
 
     unit-tests:
         runs-on: ubuntu-latest
-        name: Unit tests (PHP ${{ matrix.php }})
+        name: Unit tests (PHP ${{ matrix.php }}) with deps=${{ matrix.dependency-versions }}
         strategy:
             fail-fast: false
             matrix:
@@ -36,6 +36,11 @@ jobs:
                     - '8.0'
                     - '8.1'
                     - '8.2'
+                dependency-versions:
+                    - highest
+                include:
+                    - php: '7.4'
+                      dependency-versions: lowest
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
@@ -47,6 +52,8 @@ jobs:
 
             -   name: Install Composer dependencies
                 uses: ramsey/composer-install@v2
+                with:
+                    dependency-versions: ${{ matrix.dependency }}
 
             -   name: Run tests
                 run: make phpunit
