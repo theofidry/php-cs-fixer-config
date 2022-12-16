@@ -114,28 +114,18 @@ class FidryConfigTest extends TestCase
 
     public static function dirtyClassProvider(): iterable
     {
-        yield '7.2' => [
-            70200,
-            self::FIXTURES_DIR.'/ExampleClass.fixed.72.php',
-        ];
-
-        yield '7.3' => [
-            70300,
-            self::FIXTURES_DIR.'/ExampleClass.fixed.73.php',
-        ];
-
         yield '7.4' => [
-            70400,
+            70_400,
             self::FIXTURES_DIR.'/ExampleClass.fixed.74.php',
         ];
 
         yield '8.0' => [
-            80000,
+            80_000,
             self::FIXTURES_DIR.'/ExampleClass.fixed.80.php',
         ];
 
         yield '8.1' => [
-            80100,
+            80_100,
             self::FIXTURES_DIR.'/ExampleClass.fixed.81.php',
         ];
     }
