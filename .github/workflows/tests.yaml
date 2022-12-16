@@ -38,9 +38,9 @@ jobs:
                     - '8.2'
                 dependency-versions:
                     - highest
-            include:
-                - php: '7.4'
-                  dependency-versions: lowest
+                include:
+                    - php: '7.4'
+                      dependency-versions: lowest
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
