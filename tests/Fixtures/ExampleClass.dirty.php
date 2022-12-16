@@ -14,9 +14,13 @@ class ExampleClass
     public function __construct()
     {
         $array = array(
-            1,2,3,
+            1,
+            2,
+            3
         );
-
+        foo(function ($a) use ($b) {
+            return $a + $b;
+        });
         echo \PHP_VERSION_ID;
         $defined = \defined('FOO');
         $dateTime = new \DateTime();
