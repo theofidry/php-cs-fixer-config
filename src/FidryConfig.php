@@ -186,6 +186,7 @@ final class FidryConfig extends BaseConfig
                     'arrays',
                     'arguments',
                     'parameters',
+                    'match',
                 ],
             ],
         ],
