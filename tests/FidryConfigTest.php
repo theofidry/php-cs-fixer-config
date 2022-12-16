@@ -17,7 +17,9 @@ use Fidry\PhpCsFixerConfig\FidryConfig;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use function file_get_contents;
+use function sprintf;
 use function str_replace;
+use const PHP_VERSION_ID;
 
 /**
  * @covers \Fidry\PhpCsFixerConfig\FidryConfig
@@ -64,8 +66,23 @@ class FidryConfigTest extends TestCase
         self::assertInstanceOf(FidryConfig::class, $config);
     }
 
-    public function test_it_can_be_used_to_fix_code(): void
-    {
+    /**
+     * @dataProvider dirtyClassProvider
+     */
+    public function test_it_can_be_used_to_fix_code(
+        int $phpMinVersion,
+        string $expectedFixedPath
+    ): void {
+        if (PHP_VERSION_ID <= $phpMinVersion) {
+            self::markTestSkipped(
+                sprintf(
+                    'Cannot test the config with the min version "%s": currently on "%s"',
+                    $phpMinVersion,
+                    PHP_VERSION_ID,
+                ),
+            );
+        }
+
         $tmpFile = $this->tmpDir.'/ExampleClass.php';
 
         $this->filesystem->copy(
@@ -82,17 +99,35 @@ class FidryConfigTest extends TestCase
                 For the full copyright and license information, please view the LICENSE
                 file that was distributed with this source code.
                 EOF,
-            74_000,
+            $phpMinVersion,
         );
         $config->setRiskyAllowed(true);
 
         CSFixerFacade::fixFiles($config, $this->tmpDir);
 
         self::assertFileEquals(
-            self::FIXTURES_DIR.'/ExampleClass.fixed.php',
+            $expectedFixedPath,
             $tmpFile,
             file_get_contents($tmpFile),
         );
+    }
+
+    public static function dirtyClassProvider(): iterable
+    {
+        yield '7.4' => [
+            70_400,
+            self::FIXTURES_DIR.'/ExampleClass.fixed.74.php',
+        ];
+
+        yield '8.0' => [
+            80_000,
+            self::FIXTURES_DIR.'/ExampleClass.fixed.80.php',
+        ];
+
+        yield '8.1' => [
+            80_100,
+            self::FIXTURES_DIR.'/ExampleClass.fixed.81.php',
+        ];
     }
 
     /**

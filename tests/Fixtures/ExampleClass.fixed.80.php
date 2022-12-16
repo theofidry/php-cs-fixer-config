@@ -37,5 +37,6 @@ class ExampleClass
         $defined = defined('FOO');
         $dateTime = new DateTime();
         $dateTimeImmutable = new DateTimeImmutable();
+        $a = null;
     }
 }
