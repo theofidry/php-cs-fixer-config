@@ -172,7 +172,7 @@ final class FidryConfig extends BaseConfig
             '@PHP80Migration' => true,
             '@PHP80Migration:risky' => true,
         ],
-        81000 => [
+        80100 => [
             '@PHP81Migration' => true,
 
             'no_superfluous_phpdoc_tags' => [
@@ -189,6 +189,9 @@ final class FidryConfig extends BaseConfig
                     'match',
                 ],
             ],
+        ],
+        80200 => [
+            '@PHP82Migration' => true,
         ],
     ];
 

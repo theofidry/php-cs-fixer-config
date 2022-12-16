@@ -21,5 +21,9 @@ class ExampleClass
         $defined = \defined('FOO');
         $dateTime = new \DateTime();
         $dateTimeImmutable = new \DateTimeImmutable();
+        0 === strpos($haystack, $needle);
+        $foo = 0123;
+        $name = 'World';
+        echo "Hello ${name}!";
     }
 }
