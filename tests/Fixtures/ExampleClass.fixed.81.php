@@ -38,5 +38,6 @@ class ExampleClass
         $dateTime = new DateTime();
         $dateTimeImmutable = new DateTimeImmutable();
         $a = null;
+        $foo = 0o123;
     }
 }

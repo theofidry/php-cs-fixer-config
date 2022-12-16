@@ -22,5 +22,6 @@ class ExampleClass
         $dateTime = new \DateTime();
         $dateTimeImmutable = new \DateTimeImmutable();
         $a = (unset) $b;
+        $foo = 0123;
     }
 }
