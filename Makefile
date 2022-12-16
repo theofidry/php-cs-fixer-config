@@ -9,6 +9,11 @@ PHPUNIT = $(PHPUNIT_BIN)
 
 .DEFAULT_GOAL := all
 
+.PHONY: help
+help:
+	@printf "\033[33mUsage:\033[0m\n  make TARGET\n\n\033[32m#\n# Commands\n#---------------------------------------------------------------------------\033[0m\n"
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//' | awk 'BEGIN {FS = ":"}; {printf "\033[33m%s:\033[0m%s\n", $$1, $$2}'
+
 .PHONY: all
 all: validate_package cs phpunit
 
@@ -17,9 +22,11 @@ validate_package:
 	composer validate --strict
 
 .PHONY: cs
+cs:		## Runs CS fixers
 cs: php_cs_fixer
 
 .PHONY: cs_lint
+cs_lint:	## Runs CS linters
 cs_lint: composer_normalize_lint php_cs_fixer_lint
 
 .PHONY: php_cs_fixer
@@ -39,6 +46,7 @@ composer_normalize_lint: vendor
 	composer normalize --dry-run
 
 .PHONY: phpunit
+phpunit:	## Runs PHPUnit
 phpunit: $(PHPUNIT_BIN)
 	$(PHPUNIT)
 
