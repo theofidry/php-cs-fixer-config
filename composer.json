@@ -18,9 +18,9 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "~2.13.0",
-        "friendsofphp/php-cs-fixer": "^3.8",
-        "phpunit/phpunit": "^9.5",
-        "symfony/filesystem": "^5.4"
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpunit/phpunit": "^9.4.3",
+        "symfony/filesystem": "^5.4 || ^6.1"
     },
     "config": {
         "allow-plugins": {
