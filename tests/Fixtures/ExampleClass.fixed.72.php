@@ -34,7 +34,9 @@ class ExampleClass
             2,
             3,
         ];
-        foo(fn ($a) => $a + $b);
+        foo(function ($a) use ($b) {
+            return $a + $b;
+        });
         echo PHP_VERSION_ID;
         $defined = defined('FOO');
         $dateTime = new DateTime();

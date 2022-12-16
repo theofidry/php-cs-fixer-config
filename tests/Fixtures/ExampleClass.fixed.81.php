@@ -30,9 +30,11 @@ class ExampleClass
     public function __construct()
     {
         $array = [
-            1, 2, 3,
+            1,
+            2,
+            3,
         ];
-
+        foo(fn ($a) => $a + $b);
         echo PHP_VERSION_ID;
         $defined = defined('FOO');
         $dateTime = new DateTime();
