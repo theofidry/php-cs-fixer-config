@@ -1,5 +1,5 @@
 {
-    "name": "theofidry/php-cs-fixer-config",
+    "name": "fidry/php-cs-fixer-config",
     "type": "library",
     "description": "The PHP-CS-Fixer default config for my projects",
     "license": "MIT",
