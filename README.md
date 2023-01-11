@@ -6,7 +6,7 @@ My personal PHP-CS-Fixer base configuration.
 ## Installation
 
 ```
-$ composer require --dev theofidry/php-cs-fixer-config
+$ composer require --dev fidry/php-cs-fixer-config
 ```
 
 
