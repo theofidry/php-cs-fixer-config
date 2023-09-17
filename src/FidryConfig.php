@@ -84,6 +84,7 @@ final class FidryConfig extends BaseConfig
         'method_argument_space' => [
             'on_multiline' => 'ensure_fully_multiline',
         ],
+        'modernize_strpos' => false,
         'modernize_types_casting' => true,
         'multiline_comment_opening_closing' => true,
         // Keep semicolons on the last line of multiline statements
@@ -147,6 +148,7 @@ final class FidryConfig extends BaseConfig
         'php_unit_set_up_tear_down_visibility' => true,
         // Don't replace assertEquals() by assertSame()
         'php_unit_strict' => false,
+        'php_unit_data_provider_name' => false,
         'php_unit_test_class_requires_covers' => false,
         'php_unit_test_case_static_method_calls' => [
             'call_type' => 'self',
@@ -154,6 +156,7 @@ final class FidryConfig extends BaseConfig
         'pow_to_exponentiation' => true,
         'protected_to_private' => true,
         'self_static_accessor' => true,
+        'single_line_empty_body' => false,
         'single_line_throw' => false,
         'single_trait_insert_per_statement' => false,
         // Don't replace == by === as we use it to compare value objects
