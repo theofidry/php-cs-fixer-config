@@ -136,7 +136,7 @@ class FidryConfigTest extends TestCase
     }
 
     /**
-     * @dataProvider minPhpVersion
+     * @dataProvider minPhpVersionProvider
      *
      * @param list<string> $expectedRules
      * @param list<string> $expectedIgnoredRules
@@ -159,7 +159,7 @@ class FidryConfigTest extends TestCase
         }
     }
 
-    public static function minPhpVersion(): iterable
+    public static function minPhpVersionProvider(): iterable
     {
         $php74Rule = '@PHP70Migration';
         $php80Rule = '@PHP80Migration';
