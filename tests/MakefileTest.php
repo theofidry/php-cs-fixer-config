@@ -36,6 +36,7 @@ final class MakefileTest extends BaseMakefileTestCase
             [32m#
             # Commands
             #---------------------------------------------------------------------------[0m
+            [33mclean:[0m		 Clean temporary files
             [33mcs:[0m		 Runs CS fixers
             [33mcs_lint:[0m	 Runs CS linters
             [33mphpunit:[0m	 Runs PHPUnit

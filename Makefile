@@ -21,6 +21,20 @@ all: validate_package cs phpunit
 validate_package:
 	composer validate --strict
 
+.PHONY: clean
+clean:		## Clean temporary files
+clean:
+	rm -rf dist \
+		vendor \
+		|| true
+	mkdir -p dist
+	touch dist/.gitkeep
+
+	@# Silently remove old files
+	@rm -rf .php-cs-fixer.cache \
+		.phpunit.result.cache \
+		|| true
+
 .PHONY: cs
 cs:		## Runs CS fixers
 cs: php_cs_fixer
