@@ -196,6 +196,9 @@ final class FidryConfig extends BaseConfig
         80200 => [
             '@PHP82Migration' => true,
         ],
+        80300 => [
+            '@PHP83Migration' => true,
+        ],
     ];
 
     public function __construct(?string $headerComment, int $phpMinVersion)
