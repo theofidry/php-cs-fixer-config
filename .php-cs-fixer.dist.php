@@ -34,4 +34,6 @@ $config = new FidryConfig(
     70400,
 );
 
-return $config->setFinder($finder);
+return $config
+    ->setFinder($finder)
+    ->setCacheFile(__DIR__.'/dist/.php-cs-fixer.cache');
