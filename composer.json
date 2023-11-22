@@ -19,7 +19,7 @@
         "ergebnis/composer-normalize": "~2.13.0",
         "fidry/makefile": "^0.2.1 || ^1.0.0",
         "friendsofphp/php-cs-fixer": "^3.32.0",
-        "phpunit/phpunit": "^9.4.3",
+        "phpunit/phpunit": "^9.4.3 || ^10.0",
         "symfony/filesystem": "^5.4 || ^6.1"
     },
     "config": {
