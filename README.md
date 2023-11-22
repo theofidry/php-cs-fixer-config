@@ -5,8 +5,8 @@ My personal PHP-CS-Fixer base configuration.
 
 ## Installation
 
-```
-$ composer require --dev fidry/php-cs-fixer-config
+```shell
+composer require --dev fidry/php-cs-fixer-config
 ```
 
 
