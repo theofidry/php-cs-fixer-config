@@ -52,7 +52,7 @@ final class FidryConfig extends BaseConfig
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
         'combine_nested_dirname' => true,
-        'compact_nullable_typehint' => true,
+        'compact_nullable_type_declaration' => true,
         'declare_strict_types' => true,
         'dir_constant' => true,
         'echo_tag_syntax' => [
