@@ -20,7 +20,7 @@
         "symfony/filesystem": "^5.4 || ^6.1"
     },
     "conflict": {
-        "friendsofphp/php-cs-fixer": "<3.32.0 >=4.0"
+        "friendsofphp/php-cs-fixer": "<3.32.0 || >=4.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
