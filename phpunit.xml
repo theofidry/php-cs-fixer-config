@@ -5,7 +5,7 @@
          bootstrap="vendor/autoload.php"
          failOnRisky="true"
          failOnWarning="true"
-         cacheResultFile="dist/.phpunit.result.cache">
+         cacheDirectory="dist/.phpunit-cache">
 
     <testsuites>
         <testsuite name="Test Suite">
