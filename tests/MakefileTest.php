@@ -19,6 +19,8 @@ use Fidry\Makefile\Test\BaseMakefileTestCase;
  * @coversNothing
  *
  * @internal
+ *
+ * @requires PHP 8.4
  */
 final class MakefileTest extends BaseMakefileTestCase
 {
