@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Fidry\PhpCsFixerConfig\Tests;
 
 use Fidry\PhpCsFixerConfig\FidryConfig;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use function file_get_contents;
@@ -69,6 +70,7 @@ class FidryConfigTest extends TestCase
     /**
      * @dataProvider dirtyClassProvider
      */
+    #[DataProvider('dirtyClassProvider')]
     public function test_it_can_be_used_to_fix_code(
         int $phpMinVersion,
         string $expectedFixedPath
@@ -141,6 +143,7 @@ class FidryConfigTest extends TestCase
      * @param list<string> $expectedRules
      * @param list<string> $expectedIgnoredRules
      */
+    #[DataProvider('minPhpVersionProvider')]
     public function test_it_applies_rules_supported_by_the_min_php_version(
         int $minPhpVersion,
         array $expectedRules,
