@@ -7,8 +7,12 @@ on:
     schedule:
         - cron: '0 0 1 * *'
 
+permissions: {}
+
 jobs:
     tests:
+        permissions:
+            contents: read
         runs-on: ubuntu-latest
         name: Lint ${{ matrix.check.name }}
         strategy:
