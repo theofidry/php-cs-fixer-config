@@ -142,6 +142,9 @@ final class FidryConfig extends BaseConfig
         'phpdoc_types_order' => false,
         'phpdoc_var_annotation_correct_order' => true,
         'php_unit_construct' => true,
+        'php_unit_data_provider_method_order' => [
+            'placement' => 'after',
+        ],
         'php_unit_method_casing' => [
             'case' => 'snake_case',
         ],
