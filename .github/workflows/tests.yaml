@@ -7,8 +7,12 @@ on:
     schedule:
         - cron: '0 0 1 * *'
 
+permissions: {}
+
 jobs:
     composer-json:
+        permissions:
+            contents: read
         runs-on: ubuntu-latest
         name: Checks composer.json configuration
         strategy:
@@ -28,6 +32,8 @@ jobs:
                 run: make validate_package
 
     unit-tests:
+        permissions:
+            contents: read
         runs-on: ubuntu-latest
         name: Unit tests (PHP ${{ matrix.php }}) with deps=${{ matrix.dependency-versions }}
         strategy:
