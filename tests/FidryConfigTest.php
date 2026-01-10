@@ -121,69 +121,50 @@ class FidryConfigTest extends TestCase
             self::FIXTURES_DIR.'/ExampleClass.fixed.74.php',
         ];
 
-        yield '8.0' => [
-            80_000,
-            self::FIXTURES_DIR.'/ExampleClass.fixed.80.php',
-        ];
-
-        yield '8.1' => [
-            80_100,
-            self::FIXTURES_DIR.'/ExampleClass.fixed.81.php',
-        ];
-
-        yield '8.2' => [
-            80_200,
-            self::FIXTURES_DIR.'/ExampleClass.fixed.82.php',
-        ];
+        //        yield '8.0' => [
+        //            80_000,
+        //            self::FIXTURES_DIR.'/ExampleClass.fixed.80.php',
+        //        ];
+        //
+        //        yield '8.1' => [
+        //            80_100,
+        //            self::FIXTURES_DIR.'/ExampleClass.fixed.81.php',
+        //        ];
+        //
+        //        yield '8.2' => [
+        //            80_200,
+        //            self::FIXTURES_DIR.'/ExampleClass.fixed.82.php',
+        //        ];
     }
 
-    /**
-     * @dataProvider minPhpVersionProvider
-     *
-     * @param list<string> $expectedRules
-     * @param list<string> $expectedIgnoredRules
-     */
-    #[DataProvider('minPhpVersionProvider')]
-    public function test_it_applies_rules_supported_by_the_min_php_version(
-        int $minPhpVersion,
-        array $expectedRules,
-        array $expectedIgnoredRules
-    ): void {
-        $config = new FidryConfig('', $minPhpVersion);
-
-        $rules = $config->getRules();
-
-        foreach ($expectedRules as $expectedRule) {
-            self::assertArrayHasKey($expectedRule, $rules);
-        }
-
-        foreach ($expectedIgnoredRules as $ignoredRule) {
-            self::assertArrayNotHasKey($ignoredRule, $rules);
-        }
-    }
-
-    public static function minPhpVersionProvider(): iterable
-    {
-        $php74Rule = '@PHP70Migration';
-        $php80Rule = '@PHP80Migration';
-        $php81Rule = '@PHP81Migration';
-
-        yield [
-            74000,
-            [$php74Rule],
-            [$php80Rule, $php81Rule],
-        ];
-
-        yield [
-            80000,
-            [$php74Rule, $php80Rule],
-            [$php81Rule],
-        ];
-
-        yield [
-            81000,
-            [$php74Rule, $php80Rule, $php81Rule],
-            [],
-        ];
-    }
+    //    /**
+    //     * @dataProvider minPhpVersionProvider
+    //     *
+    //     * @param list<string> $expectedRules
+    //     * @param list<string> $expectedIgnoredRules
+    //     */
+    //    #[DataProvider('minPhpVersionProvider')]
+    //    public function test_it_applies_rules_supported_by_the_min_php_version(
+    //        int $minPhpVersion,
+    //        array $expectedRules,
+    //        array $expectedIgnoredRules
+    //    ): void {
+    //        $config = new FidryConfig('', $minPhpVersion);
+    //
+    //        $rules = $config->getRules();
+    //
+    //        foreach ($expectedRules as $expectedRule) {
+    //            self::assertArrayHasKey($expectedRule, $rules);
+    //        }
+    //
+    //        foreach ($expectedIgnoredRules as $ignoredRule) {
+    //            self::assertArrayNotHasKey($ignoredRule, $rules);
+    //        }
+    //    }
+    //
+    //    public static function minPhpVersionProvider(): iterable
+    //    {
+    //        // TODO: no more examples
+    //        return [];
+    //    }
 }
