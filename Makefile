@@ -24,11 +24,11 @@ validate_package:
 .PHONY: clean
 clean:		## Clean temporary files
 clean:
-	rm -rf dist \
+	rm -rf var \
 		vendor \
 		|| true
-	mkdir -p dist
-	touch dist/.gitkeep
+	mkdir -p var
+	touch var/.gitkeep
 
 	@# Silently remove old files
 	@rm -rf .php-cs-fixer.cache \
