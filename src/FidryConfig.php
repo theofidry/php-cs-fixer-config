@@ -23,12 +23,10 @@ final class FidryConfig extends BaseConfig
     private const UNIVERSAL_RULES = [
         '@DoctrineAnnotation' => true,
 
-        '@PHP70Migration' => true,
-        '@PHP70Migration:risky' => true,
-        '@PHP73Migration' => true,
+        '@autoPHPMigration' => true,
+        '@autoPHPMigration:risky' => true,
 
-        '@PHP74Migration' => true,
-        '@PHP74Migration:risky' => true,
+        '@autoPHPUnitMigration:risky' => true,
 
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
@@ -171,13 +169,7 @@ final class FidryConfig extends BaseConfig
     ];
 
     private const PHP_VERSION_SPECIFIC_RULES = [
-        80000 => [
-            '@PHP80Migration' => true,
-            '@PHP80Migration:risky' => true,
-        ],
         80100 => [
-            '@PHP81Migration' => true,
-
             'no_superfluous_phpdoc_tags' => [
                 'remove_inheritdoc' => true,
                 // Required for Psalm in <PHP8.1
@@ -192,12 +184,6 @@ final class FidryConfig extends BaseConfig
                     'match',
                 ],
             ],
-        ],
-        80200 => [
-            '@PHP82Migration' => true,
-        ],
-        80300 => [
-            '@PHP83Migration' => true,
         ],
     ];
 
