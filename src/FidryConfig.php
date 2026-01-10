@@ -23,12 +23,12 @@ final class FidryConfig extends BaseConfig
     private const UNIVERSAL_RULES = [
         '@DoctrineAnnotation' => true,
 
-        '@PHP70Migration' => true,
-        '@PHP70Migration:risky' => true,
-        '@PHP73Migration' => true,
+        '@PHP7x0Migration' => true,
+        '@PHP7x0Migration:risky' => true,
+        '@PHP7x3Migration' => true,
 
-        '@PHP74Migration' => true,
-        '@PHP74Migration:risky' => true,
+        '@PHP7x4Migration' => true,
+        '@PHP7x4Migration:risky' => true,
 
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
@@ -149,6 +149,7 @@ final class FidryConfig extends BaseConfig
         // Don't replace assertEquals() by assertSame()
         'php_unit_strict' => false,
         'php_unit_data_provider_name' => false,
+        'php_unit_data_provider_method_order' => false,
         'php_unit_test_class_requires_covers' => false,
         'php_unit_test_case_static_method_calls' => [
             'call_type' => 'self',
@@ -172,11 +173,11 @@ final class FidryConfig extends BaseConfig
 
     private const PHP_VERSION_SPECIFIC_RULES = [
         80000 => [
-            '@PHP80Migration' => true,
-            '@PHP80Migration:risky' => true,
+            '@PHP8x0Migration' => true,
+            '@PHP8x0Migration:risky' => true,
         ],
         80100 => [
-            '@PHP81Migration' => true,
+            '@PHP8x1Migration' => true,
 
             'no_superfluous_phpdoc_tags' => [
                 'remove_inheritdoc' => true,
@@ -194,10 +195,10 @@ final class FidryConfig extends BaseConfig
             ],
         ],
         80200 => [
-            '@PHP82Migration' => true,
+            '@PHP8x2Migration' => true,
         ],
         80300 => [
-            '@PHP83Migration' => true,
+            '@PHP8x3Migration' => true,
         ],
     ];
 
