@@ -1,4 +1,5 @@
 /dist/
-!/dist/.gitkeep
+/var/
+!/var/.gitkeep
 /composer.lock
 /vendor/
